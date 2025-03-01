@@ -15,7 +15,9 @@ public class Main {
                 System.out.println("Enter name: ");
                 String memberName = scanner.nextLine();
                 GroupTeams.get(teamName).add(memberName);
-
+                if (memberName.toLowerCase().contains("stop")) {
+                    break;
+                } else {
 
                     boolean check = true;
                     while (check) {
@@ -115,5 +117,5 @@ public class Main {
         }
 
     }
-
+    }
 
