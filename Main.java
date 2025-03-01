@@ -1,9 +1,8 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        registerIndividualTeams();
+        registerTeams();
     }
-
     public static void registerTeams() {
         HashMap<String, ArrayList<String>> GroupTeams = new HashMap<>();
         for (int i = 0; i < 4; i++) {
@@ -13,34 +12,34 @@ public class Main {
 
             GroupTeams.put(teamName, new ArrayList<>());
             for (int j = 0; j < 5; j++) {
-                Scanner scanner1 = new Scanner(System.in);
                 System.out.println("Enter name: ");
                 String memberName = scanner.nextLine();
                 GroupTeams.get(teamName).add(memberName);
 
-            }
 
-            boolean check = true;
-            while (check) {
-                System.out.println("Do you want to play 1 game or all games: ");
-                String gameChoice = scanner.nextLine();
-                if (gameChoice.contains("1") || gameChoice.toLowerCase().contains("one")) {
-                    GroupTeams.get(teamName).add("1");
-                    check = false;
-                } else if (gameChoice.toLowerCase().contains("all")) {
-                    GroupTeams.get(teamName).add("0");
-                    check = false;
-                } else {
-                    System.out.println("Error Please Try Again");
+                    boolean check = true;
+                    while (check) {
+                        System.out.println("Do you want to play 1 game or all games: ");
+                        String gameChoice = scanner.nextLine();
+                        if (gameChoice.contains("1") || gameChoice.toLowerCase().contains("one")) {
+                            GroupTeams.get(teamName).add("1");
+                            check = false;
+                        } else if (gameChoice.toLowerCase().contains("all")) {
+                            GroupTeams.get(teamName).add("0");
+                            check = false;
+                        } else {
+                            System.out.println("Error Please Try Again");
+                        }
+                        System.out.println(GroupTeams);
+
+                    }
+
                 }
-                System.out.println(GroupTeams);
+
 
             }
-
         }
-
-
-            }
+        }
     public static void registerIndividualTeams(){
         HashMap<String, ArrayList<String>> IndividualTeams = new HashMap<>();
         for (int i = 0; i < 20; i++){
@@ -106,5 +105,15 @@ public class Main {
             System.out.println(IndividualTeams);
         }
     }
+    public static void  pointsSystemTeams(){
+        boolean check3 = true;
+        Scanner scanner = new Scanner(System.in);
+        while (check3){
+            System.out.println(" Please enter who came first to Tug of War:");
+            String TowFP = scanner.nextLine();
+
+        }
+
     }
+
 
