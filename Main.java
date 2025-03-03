@@ -3,10 +3,12 @@ import java.util.*;
 public class Main {
     static HashMap<String, ArrayList<String>> GroupTeams = new HashMap<>();
     static HashMap<String, ArrayList<String>> IndividualTeams = new HashMap<>();
+    static HashMap<String, ArrayList<String>> TeamPoints = new HashMap<>();
+
     public static void main(String[] args) {
         registerTeams();
+        pointsSystemTeams();
     }
-
     public static void registerTeams() {
 
         for (int i = 0; i < 4; i++) {
@@ -41,7 +43,7 @@ public class Main {
                                 We have 5 different events please select one out of the 5 options by selecting the corresponding number
                                 1: Tug of War
                                 2: Team Cooking Competition
-                                3: Back to Back Drwaing
+                                3: Back to Back Drawing
                                 4: Trivia
                                 5: Scavenger Hunt
                                 """);
@@ -154,40 +156,47 @@ public class Main {
         }
     }
 
-    public void pointsSystemTeams() {
+    public static void pointsSystemTeams() {
+Scanner scanner = new Scanner(System.in);
+        String[] games = {
+                "Tug of War", "Team Cooking Competition", "Back to Back Drawing",
+                "Trivia", "Scavenger Hunt"
+        };
+        int[] points = {5, 3, 1}; // Points for 1st, 2nd, and 3rd place
 
-        boolean check3 = true;
-        Scanner scanner = new Scanner(System.in);
-        while (check3) {
-            System.out.println(" Please enter what team came 1st in Tug of War:");
-            String TowFP = scanner.nextLine();
-            if (Main.GroupTeams.containsKey(TowFP)){
-                GroupTeams.get(TowFP).add("5"); // 1st place gets 5 points
-            }else {
-                System.out.println("Error, team not found. Please enter a valid team name."); // makes sure any name not in the list isn't valid
+        for (String game : games) {
+            System.out.println("Enter results for: " + game);
+
+            for (int i = 0; i < 3; i++) { // Loop
+                String positionText = (i == 0) ? "1st" : (i == 1) ? "2nd" : "3rd";
+                String teamName;
+
+                while (true) { // stops when "stop" is said
+                    System.out.println("\nEnter the team that came " + positionText + " (or type 'stop' to skip): ");
+                    teamName = scanner.nextLine().trim();
+
+                    if (teamName.equalsIgnoreCase("stop")) {
+                        System.out.println("\nSkipping the rest of the input for this game...");
+                        break; // Exit loop and move to the next game
+                    }
+
+                    if (GroupTeams.containsKey(teamName)) {
+                        GroupTeams.get(teamName).add(String.valueOf(points[i])); // Add points
+                        break; // Exit loop once a valid team is entered
+                    } else {
+                        System.out.println("\n Error, Team not found. Please enter a valid team name.");
+                    }
+                }
+
+                if (teamName.equalsIgnoreCase("stop")) {
+                    break; // Skip the rest of the places for this game
+                }
             }
-
-            System.out.println("please Enter what team came 2nd in Tug of War:");
-            String TowSP = scanner.nextLine();
-
-            if (Main.GroupTeams.containsKey(TowSP)){
-                GroupTeams.get(TowSP).add("3"); // 2nd place gets 3 points
-            }else {
-                System.out.println("Error, team not found. Please enter a valid team name."); // makes sure any name not in the list isn't valid
-            }
-
-            System.out.println("Please Enter what team came 3rd in Tug of War:");
-            String TowTP = scanner.nextLine();
-
-            if (Main.GroupTeams.containsKey(TowTP)){
-                GroupTeams.get(TowTP).add("1"); // 3rd place gets 1 points
-            }else {
-                System.out.println("Error, team not found. Please enter a valid team name."); // makes sure any name not in the list isn't valid
-            }
-            check3 = false;
         }
+        System.out.println("All results recorded successfully!");
     }
 }
+
 
 
 
