@@ -1,8 +1,8 @@
 import java.lang.reflect.Array;
 import java.util.*;
 public class Main {
-    HashMap<String, ArrayList<String>> GroupTeams = new HashMap<>();
-    HashMap<String, ArrayList<String>> IndividualTeams = new HashMap<>();
+    static HashMap<String, ArrayList<String>> GroupTeams = new HashMap<>();
+    static HashMap<String, ArrayList<String>> IndividualTeams = new HashMap<>();
     public static void main(String[] args) {
         registerTeams();
     }
@@ -161,7 +161,7 @@ public class Main {
         while (check3) {
             System.out.println(" Please enter what team came 1st in Tug of War:");
             String TowFP = scanner.nextLine();
-            if (this.GroupTeams.containsKey(TowFP)){
+            if (Main.GroupTeams.containsKey(TowFP)){
                 GroupTeams.get(TowFP).add("5"); // 1st place gets 5 points
             }else {
                 System.out.println("Error, team not found. Please enter a valid team name."); // makes sure any name not in the list isn't valid
@@ -170,7 +170,7 @@ public class Main {
             System.out.println("please Enter what team came 2nd in Tug of War:");
             String TowSP = scanner.nextLine();
 
-            if (this.GroupTeams.containsKey(TowSP)){
+            if (Main.GroupTeams.containsKey(TowSP)){
                 GroupTeams.get(TowSP).add("3"); // 2nd place gets 3 points
             }else {
                 System.out.println("Error, team not found. Please enter a valid team name."); // makes sure any name not in the list isn't valid
@@ -179,7 +179,7 @@ public class Main {
             System.out.println("Please Enter what team came 3rd in Tug of War:");
             String TowTP = scanner.nextLine();
 
-            if (this.GroupTeams.containsKey(TowTP)){
+            if (Main.GroupTeams.containsKey(TowTP)){
                 GroupTeams.get(TowTP).add("1"); // 3rd place gets 1 points
             }else {
                 System.out.println("Error, team not found. Please enter a valid team name."); // makes sure any name not in the list isn't valid
